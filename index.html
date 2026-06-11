@@ -3,44 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>都市地理與地方創生 - 坪林區</title>
+    <title>一葉知山河｜坪林地方創生</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* 自訂細節：微調茶香主題核心色調 */
         :root {
             --tea-light: #F4F9F4;
-            --tea-primary: #4G9352;
+            --tea-primary: #2d6a4f;
         }
         body {
             font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
             background-color: #F8FAF8;
         }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
-<body class="text-gray-800 antialiased">
+<body class="text-gray-800 antialiased relative">
 
-    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-emerald-100 shadow-sm">
+    <a href="#" onclick="alert('【模擬跳轉】已開啟 LINE App 加入好友畫面！\n\n獲得：首購 9 折優惠券與最新活動通知。')" class="fixed bottom-6 right-6 bg-[#06C755] text-white w-14 h-14 rounded-full shadow-lg hover:bg-[#05b34c] hover:scale-105 hover:shadow-xl transition-all duration-300 z-50 flex items-center justify-center group cursor-pointer">
+        <i class="fa-brands fa-line text-3xl"></i>
+        <div class="absolute right-16 bg-white text-gray-800 text-xs font-bold py-2 px-3 rounded-xl shadow-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-green-100">
+            加入會員領優惠 <span class="text-[#06C755]">●</span>
+        </div>
+    </a>
+
+    <nav class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-emerald-100 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <div class="flex-shrink-0 flex items-center gap-2">
-                    <i class="fa-solid fa-leaf text-emerald-600 text-xl"></i>
-                    <span class="font-bold text-xl text-emerald-950 tracking-wider">漫遊坪林．地方創生</span>
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="switchView('main'); window.scrollTo(0,0);">
+                    <i class="fa-solid fa-leaf text-emerald-700 text-xl"></i>
+                    <span class="font-bold text-xl text-emerald-950 tracking-widest font-serif">一葉知山河<span class="text-emerald-600/50 mx-2">|</span>坪林</span>
                 </div>
-                <div class="hidden md:flex items-center space-x-1 lg:space-x-4">
-                    <button onclick="switchView('main'); scrollToSection('intro')" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200 cursor-pointer">介紹坪林</button>
-                    <button onclick="switchView('main'); scrollToSection('transport')" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200 cursor-pointer">如何前往</button>
-                    <button onclick="switchView('main'); scrollToSection('attractions')" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200 cursor-pointer">必遊景點</button>
-                    <button onclick="switchView('main'); scrollToSection('itinerary')" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200 cursor-pointer">行程規劃</button>
+                <div class="hidden lg:flex items-center space-x-1">
+                    <button onclick="switchView('main'); scrollToSection('reels-voting')" class="nav-link px-3 py-2 rounded-md text-sm font-bold text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200 cursor-pointer"><i class="fa-solid fa-fire text-amber-500 mr-1"></i>影音大賞</button>
+                    <button onclick="switchView('main'); scrollToSection('attractions')" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200 cursor-pointer">景點導覽</button>
+                    <button onclick="switchView('main'); scrollToSection('itinerary')" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200 cursor-pointer">沉浸行程</button>
+                    <button onclick="switchView('main'); scrollToSection('tea-houses')" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200 cursor-pointer">在地茶莊</button>
                     <button onclick="switchView('main'); scrollToSection('events')" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200 cursor-pointer">當期活動</button>
-                    <button onclick="switchView('shop')" class="px-4 py-2 rounded-full text-sm font-semibold bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm shadow-emerald-200 transition-all duration-200 ml-4 cursor-pointer">
-                        <i class="fa-solid fa-store mr-1"></i> 農業產品商城
+                    <button onclick="switchView('shop')" class="px-4 py-2 rounded-full text-sm font-bold bg-emerald-700 text-white hover:bg-emerald-800 shadow-sm transition-all duration-200 ml-4 cursor-pointer">
+                        <i class="fa-solid fa-gift mr-1"></i> 坪林選茶指南
                     </button>
                 </div>
                 <div class="flex items-center gap-4">
                     <button onclick="openCartModal()" class="relative p-2 text-gray-600 hover:text-emerald-600 transition-colors cursor-pointer">
                         <i class="fa-solid fa-shopping-cart text-lg"></i>
-                        <span id="cart-badge" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-amber-500 rounded-full hidden">0</span>
+                        <span id="cart-badge" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-rose-500 rounded-full hidden">0</span>
                     </button>
                 </div>
             </div>
@@ -49,76 +62,99 @@
 
     <div id="main-view" class="view-section">
         
-        <header class="relative bg-emerald-900 text-white py-24 px-4 overflow-hidden bg-gradient-to-br from-emerald-950 via-emerald-800 to-teal-900">
+        <header class="relative bg-emerald-900 text-white py-28 px-4 overflow-hidden bg-gradient-to-br from-emerald-950 via-emerald-800 to-teal-900">
             <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
             <div class="max-w-4xl mx-auto text-center relative z-10">
-                <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-300 text-sm font-medium rounded-full mb-4 border border-emerald-500/30">新北市坪林區地方創生企劃</span>
-                <h1 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-wide leading-tight">一葉知山河</h1>
-                <p class="text-lg text-emerald-100 max-w-2xl mx-auto font-light">結合坪林得天獨厚的自然水文生態、百年包種茶香工藝，打破傳統產業單一桎梏，打造兼具綠色旅遊與數位轉型的未來鄉鎮。</p>
+                <h1 class="text-5xl md:text-6xl font-extrabold mb-6 tracking-widest leading-tight font-serif text-transparent bg-clip-text bg-gradient-to-r from-emerald-100 to-white">一葉知山河</h1>
+                <p class="text-xl text-emerald-200 mb-8 font-light tracking-wide">用一杯好茶，走讀坪林的百年歲月</p>
+                <button onclick="scrollToSection('reels-voting')" class="px-8 py-3 bg-white text-emerald-900 rounded-full font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
+                    開始探索旅程 <i class="fa-solid fa-arrow-down ml-2"></i>
+                </button>
             </div>
         </header>
 
-        <section id="intro" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 tracking-wider">探索坪林特色</h2>
-                <div class="h-1 w-12 bg-emerald-500 mx-auto mt-4 rounded-full"></div>
-                <p class="text-gray-500 mt-2 text-sm">從地理、氣候、水文到珍貴自然資源的深度剖析</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-emerald-50/60 hover:shadow-md hover:border-emerald-100 transition-all duration-300">
-                    <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-xl mb-6 font-bold">01</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">地形構造與霧凝氣候</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                        坪林位於雪山山脈北段西側尾稜，呈現破碎山岳與縱橫溪谷地形，海拔落差顯著 。地處東北季風迎風面，終年溫潤多雨且濕度高，清晨黃昏常有「霧凝」氤氳的微氣候，極度利於茶樹休眠與養分累積 。
-                    </p>
-                </div>
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-emerald-50/60 hover:shadow-md hover:border-emerald-100 transition-all duration-300">
-                    <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-xl mb-6 font-bold">02</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">翡翠水庫水源保護區</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                        全境屬於北勢溪中上游集水區，被劃定為「翡翠水庫水源特定保護區」。雖因嚴格法律法規限制了大規模工業與都市化，但也因此規避污染，成為北台灣碩果僅存的綠色淨土，守護核心民生水源 。
-                    </p>
-                </div>
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-emerald-50/60 hover:shadow-md hover:border-emerald-100 transition-all duration-300">
-                    <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-xl mb-6 font-bold">03</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">生態典範與茶香傳承</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                        區內擁有冰河孑遺植物「台灣油杉自然保留區」。長年推動封溪護漁，使北勢溪與金瓜寮溪成為台灣鏟頜魚（苦花）的生態典範 。人文部分則以百年傳承的文山包種茶、茶業博物館與淡蘭古道南路為文化核心指標。
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section id="transport" class="py-20 bg-emerald-50/40 border-y border-emerald-50">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <section id="reels-voting" class="py-20 bg-gray-900 text-white relative overflow-hidden">
+            <div class="absolute top-0 right-0 -mt-20 -mr-20 w-64 h-64 bg-emerald-600/20 rounded-full blur-3xl"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold text-gray-900 tracking-wider">如何前往坪林</h2>
-                    <div class="h-1 w-12 bg-emerald-500 mx-auto mt-4 rounded-full"></div>
+                    <span class="text-amber-400 font-bold text-sm tracking-widest border border-amber-400/50 px-3 py-1 rounded-full mb-4 inline-block bg-amber-400/10">🏆 年度人氣票選活動</span>
+                    <h2 class="text-3xl md:text-4xl font-bold tracking-wider mt-4">【第一屆 坪林30秒】短影音大賞</h2>
+                    <p class="text-gray-400 mt-4 text-sm max-w-2xl mx-auto">為你最愛的坪林玩法投下一票！冠軍創作者將獲得「坪林推廣大使」獎金，參與投票的民眾也能抽『一葉知山河』聯名茶凍禮盒。</p>
                 </div>
-                
-                <div class="bg-white p-8 rounded-2xl shadow-sm space-y-6">
-                    <div class="flex items-start gap-4">
-                        <div class="p-3 bg-emerald-100/70 text-emerald-700 rounded-lg mt-1"><i class="fa-solid fa-car"></i></div>
-                        <div>
-                            <h4 class="font-bold text-lg text-gray-900 mb-1">途徑一：自行開車（國道五號）</h4>
-                            <p class="text-gray-600 text-sm leading-relaxed">由台北市區出發，行駛國道三號銜接國道五號（蔣渭水高速公路），於坪林交流道下，即可抵達坪林市區核心。車程約 30-40 分鐘。</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-gray-800 rounded-2xl p-4 border border-gray-700 shadow-2xl relative group">
+                        <div class="aspect-[9/16] bg-gray-700 rounded-xl overflow-hidden relative flex items-center justify-center">
+                            <div class="absolute inset-0 bg-gradient-to-b from-emerald-800/40 to-emerald-950/90 z-0"></div>
+                            <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white text-2xl cursor-pointer hover:bg-white/40 transition-colors z-10">
+                                <i class="fa-solid fa-play ml-1"></i>
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4 text-left z-10">
+                                <p class="font-bold text-lg drop-shadow-md">@TeaLover_TW</p>
+                                <p class="text-sm text-gray-200 drop-shadow-md">戴上耳機 🎧 坪林極致揉茶 ASMR，療癒你的每一天！ #坪林 #ASMR</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 space-y-3">
+                            <div class="flex justify-between text-xs text-gray-400 font-mono">
+                                <span>目前得票</span>
+                                <span id="vote-count-1" class="text-amber-400 font-bold">1,245 票</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-1.5">
+                                <div class="bg-amber-400 h-1.5 rounded-full" style="width: 65%"></div>
+                            </div>
+                            <button onclick="castVote(1)" class="w-full py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-bold text-sm transition-colors cursor-pointer">
+                                <i class="fa-solid fa-heart mr-1"></i> 投給這支影片
+                            </button>
                         </div>
                     </div>
-                    <hr class="border-gray-100">
-                    <div class="flex items-start gap-4">
-                        <div class="p-3 bg-emerald-100/70 text-emerald-700 rounded-lg mt-1"><i class="fa-solid fa-bus"></i></div>
-                        <div>
-                            <h4 class="font-bold text-lg text-gray-900 mb-1">途徑二：大眾運輸（捷運轉乘公車）</h4>
-                            <p class="text-gray-600 text-sm leading-relaxed">搭乘台北捷運松山新店線至「新店站」，出站後轉乘新店客運【綠12】或【923】公車，於「坪林總站」下車。沿途可欣賞山道北宜公路風景。</p>
+
+                    <div class="bg-gray-800 rounded-2xl p-4 border border-gray-700 shadow-2xl relative group">
+                        <div class="aspect-[9/16] bg-gray-700 rounded-xl overflow-hidden relative flex items-center justify-center">
+                            <div class="absolute inset-0 bg-gradient-to-b from-teal-800/40 to-teal-950/90 z-0"></div>
+                            <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white text-2xl cursor-pointer hover:bg-white/40 transition-colors z-10">
+                                <i class="fa-solid fa-play ml-1"></i>
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4 text-left z-10">
+                                <p class="font-bold text-lg drop-shadow-md">@FoodieGogo</p>
+                                <p class="text-sm text-gray-200 drop-shadow-md">老街必吃這三樣！茶油麵線配包種茶凍，假日馬上出發 🚗💨</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 space-y-3">
+                            <div class="flex justify-between text-xs text-gray-400 font-mono">
+                                <span>目前得票</span>
+                                <span id="vote-count-2" class="text-amber-400 font-bold">2,108 票</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-1.5">
+                                <div class="bg-amber-400 h-1.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                            <button onclick="castVote(2)" class="w-full py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-bold text-sm transition-colors cursor-pointer">
+                                <i class="fa-solid fa-heart mr-1"></i> 投給這支影片
+                            </button>
                         </div>
                     </div>
-                    <hr class="border-gray-100">
-                    <div class="flex items-start gap-4">
-                        <div class="p-3 bg-emerald-100/70 text-emerald-700 rounded-lg mt-1"><i class="fa-solid fa-person-hiking"></i></div>
-                        <div>
-                            <h4 class="font-bold text-lg text-gray-900 mb-1">途徑三：古道健行（體驗派專用描述）</h4>
-                            <p class="text-gray-600 text-sm leading-relaxed">適合戶外愛好者。可由石碇方向沿著古樸的「淡蘭古道南路（茶道）」徒步健行進入坪林，實地用雙腳體驗昔日茶葉物資運送的歷史要道 。</p>
+
+                    <div class="bg-gray-800 rounded-2xl p-4 border border-gray-700 shadow-2xl relative group">
+                        <div class="aspect-[9/16] bg-gray-700 rounded-xl overflow-hidden relative flex items-center justify-center">
+                            <div class="absolute inset-0 bg-gradient-to-b from-stone-800/40 to-stone-950/90 z-0"></div>
+                            <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white text-2xl cursor-pointer hover:bg-white/40 transition-colors z-10">
+                                <i class="fa-solid fa-play ml-1"></i>
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4 text-left z-10">
+                                <p class="font-bold text-lg drop-shadow-md">@Hiker_Daily</p>
+                                <p class="text-sm text-gray-200 drop-shadow-md">30秒帶你走完淡蘭古道秘境，吸收滿滿芬多精 🌲🚶‍♂️</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 space-y-3">
+                            <div class="flex justify-between text-xs text-gray-400 font-mono">
+                                <span>目前得票</span>
+                                <span id="vote-count-3" class="text-amber-400 font-bold">890 票</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-1.5">
+                                <div class="bg-amber-400 h-1.5 rounded-full" style="width: 45%"></div>
+                            </div>
+                            <button onclick="castVote(3)" class="w-full py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-bold text-sm transition-colors cursor-pointer">
+                                <i class="fa-solid fa-heart mr-1"></i> 投給這支影片
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -131,8 +167,7 @@
                 <div class="h-1 w-12 bg-emerald-500 mx-auto mt-4 rounded-full"></div>
                 <p class="text-gray-500 mt-2 text-sm">點擊下方景點卡片即可查看深度介紹</p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer group hover:shadow-md transition-all duration-300" onclick="toggleAttraction('attr1')">
                     <div class="h-48 bg-emerald-800/10 relative flex items-center justify-center text-emerald-700 font-medium overflow-hidden">
                         <div class="absolute inset-0 bg-emerald-900/5 group-hover:scale-105 transition-transform duration-500 flex items-center justify-center text-center p-4">
@@ -146,11 +181,9 @@
                         </div>
                         <div id="attr1-content" class="hidden mt-4 pt-4 border-t border-gray-100 text-sm text-gray-600 space-y-2">
                             <p>沿著清澈的北勢溪修築，是全台推動「封溪護漁」最成功的典範步道之一。</p>
-                            <p>遊客能近距離觀察溪流中成群翻轉閃爍銀光的台灣鏟頜魚（苦花），被譽為「水中的螢火蟲」。</p>
                         </div>
                     </div>
                 </div>
-
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer group hover:shadow-md transition-all duration-300" onclick="toggleAttraction('attr2')">
                     <div class="h-48 bg-emerald-800/10 relative flex items-center justify-center text-emerald-700 font-medium overflow-hidden">
                         <div class="absolute inset-0 bg-emerald-900/5 group-hover:scale-105 transition-transform duration-500 flex items-center justify-center text-center p-4">
@@ -163,52 +196,14 @@
                             <span class="text-gray-400 text-xs">點擊展開 <i class="fa-solid fa-chevron-down ml-1"></i></span>
                         </div>
                         <div id="attr2-content" class="hidden mt-4 pt-4 border-t border-gray-100 text-sm text-gray-600 space-y-2">
-                            <p>全台第一座茶葉專業博物館，閩南安溪風格的建築工藝十分精美 。</p>
-                            <p>館內宛如活的文化資料庫，數位化展示了從採茶、萎凋、浪菁到烘焙的傳統包種茶精細手續 。</p>
+                            <p>全台第一座茶葉專業博物館，數位化展示了從採茶、萎凋到烘焙的傳統精細手續。</p>
                         </div>
                     </div>
                 </div>
-
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer group hover:shadow-md transition-all duration-300" onclick="toggleAttraction('attr3')">
                     <div class="h-48 bg-emerald-800/10 relative flex items-center justify-center text-emerald-700 font-medium overflow-hidden">
                         <div class="absolute inset-0 bg-emerald-900/5 group-hover:scale-105 transition-transform duration-500 flex items-center justify-center text-center p-4">
-                            <span class="text-emerald-900 font-semibold text-lg"><i class="fa-solid fa-shop mr-2"></i>坪林老街與保坪宮</span>
-                        </div>
-                    </div>
-                    <div class="p-5">
-                        <div class="flex justify-between items-center">
-                            <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">人文古蹟</span>
-                            <span class="text-gray-400 text-xs">點擊展開 <i class="fa-solid fa-chevron-down ml-1"></i></span>
-                        </div>
-                        <div id="attr3-content" class="hidden mt-4 pt-4 border-t border-gray-100 text-sm text-gray-600 space-y-2">
-                            <p>老街核心的保坪宮主祀玄天上帝，是清朝早期漢人開墾山區時的心靈精神支柱 。</p>
-                            <p>可在此品嚐到融合茶文化的在地創意料理，例如茶油麵線、茶凍與特色茶點 。</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer group hover:shadow-md transition-all duration-300" onclick="toggleAttraction('attr4')">
-                    <div class="h-48 bg-emerald-800/10 relative flex items-center justify-center text-emerald-700 font-medium overflow-hidden">
-                        <div class="absolute inset-0 bg-emerald-900/5 group-hover:scale-105 transition-transform duration-500 flex items-center justify-center text-center p-4">
-                            <span class="text-emerald-900 font-semibold text-lg"><i class="fa-solid fa-bicycle mr-2"></i>金瓜寮溪自行車道</span>
-                        </div>
-                    </div>
-                    <div class="p-5">
-                        <div class="flex justify-between items-center">
-                            <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">低碳單車旅遊</span>
-                            <span class="text-gray-400 text-xs">點擊展開 <i class="fa-solid fa-chevron-down ml-1"></i></span>
-                        </div>
-                        <div id="attr4-content" class="hidden mt-4 pt-4 border-t border-gray-100 text-sm text-gray-600 space-y-2">
-                            <p>新北市非常知名的低碳綠色自行車路線，沿著靜謐的金瓜寮溪畔蜿蜒前進 。</p>
-                            <p>沿途茶園茶山層疊交錯，空氣清新，非常適合規劃單車一日輕旅行 。</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer group hover:shadow-md transition-all duration-300" onclick="toggleAttraction('attr5')">
-                    <div class="h-48 bg-emerald-800/10 relative flex items-center justify-center text-emerald-700 font-medium overflow-hidden">
-                        <div class="absolute inset-0 bg-emerald-900/5 group-hover:scale-105 transition-transform duration-500 flex items-center justify-center text-center p-4">
-                            <span class="text-emerald-900 font-semibold text-lg"><i class="fa-solid fa-tree mr-2"></i>金瓜寮魚蕨步道</span>
+                            <span class="text-emerald-900 font-semibold text-lg"><i class="fa-solid fa-tree mr-2"></i>淡蘭古道南路</span>
                         </div>
                     </div>
                     <div class="p-5">
@@ -216,125 +211,224 @@
                             <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">芬多精療癒</span>
                             <span class="text-gray-400 text-xs">點擊展開 <i class="fa-solid fa-chevron-down ml-1"></i></span>
                         </div>
-                        <div id="attr5-content" class="hidden mt-4 pt-4 border-t border-gray-100 text-sm text-gray-600 space-y-2">
-                            <p>極具豐富茂密蕨類植物與茂密林相的天然原始生態步道，森林芬多精飽滿 。</p>
-                            <p>配合企劃推動之「療癒經濟」，可供平常壓力大的都市上班族前來放鬆大腦 。</p>
+                        <div id="attr3-content" class="hidden mt-4 pt-4 border-t border-gray-100 text-sm text-gray-600 space-y-2">
+                            <p>結合淡蘭古道南路與水土保持，提供豐富的中低海拔生態健行體驗。</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="itinerary" class="py-20 bg-emerald-50/30 border-y border-emerald-100">
-            <div class="max-w-5xl mx-auto px-4 sm:px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl font-bold text-gray-900 tracking-wider">從感官到心靈的沉浸式一日路線</h2>
-                    <div class="h-1 w-12 bg-emerald-500 mx-auto mt-4 mb-6 rounded-full"></div>
-                    <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-amber-100 text-amber-700 font-bold text-sm shadow-sm border border-amber-200">
-                        <i class="fa-solid fa-stamp text-amber-600"></i> 結合蓋章旅行模式
+        <section id="itinerary" class="py-20 bg-gradient-to-b from-emerald-50/30 to-teal-50/40 border-y border-emerald-100">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl font-bold text-emerald-950 font-serif tracking-wider">從感官到心靈的沉浸式一日路線</h2>
+                    <div class="h-1 w-16 bg-emerald-600 mx-auto mt-4 mb-6 rounded-full"></div>
+                    <span class="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-emerald-700 text-white font-bold text-sm shadow-md border border-emerald-600">
+                        <i class="fa-solid fa-stamp text-amber-300"></i> 結合蓋章旅行模式
                     </span>
                 </div>
 
-                <div class="relative max-w-3xl mx-auto">
-                    <div class="absolute left-[18px] md:left-[18px] top-6 bottom-6 w-1 bg-emerald-200 z-0 rounded-full"></div>
-                    
-                    <div class="space-y-8 z-10 relative">
-                        <div class="flex items-stretch gap-4 md:gap-6 group">
-                            <div class="flex flex-col items-center pt-3">
-                                <div class="w-10 h-10 bg-emerald-500 text-white rounded-full flex items-center justify-center font-bold border-4 border-white shadow-sm z-10 group-hover:bg-emerald-600 transition-colors">1</div>
+                <div class="space-y-24">
+
+                    <div class="flex flex-col lg:flex-row items-center gap-12">
+                        <div class="w-full lg:w-1/2 space-y-4">
+                            <div class="bg-emerald-800/10 rounded-2xl p-4 border border-emerald-100 shadow-sm">
+                                <div class="aspect-video bg-emerald-900/10 rounded-xl flex items-center justify-center text-emerald-800 font-medium">
+                                    <span class="text-sm text-center px-4"><i class="fa-solid fa-building-columns text-3xl mb-2 block"></i> 實景意象：新北市政府坪林茶業博物館外觀建築與現代化中庭</span>
+                                </div>
                             </div>
-                            <div class="flex-1 bg-white p-5 md:p-6 rounded-2xl shadow-sm border border-emerald-50 hover:shadow-md hover:border-emerald-200 transition-all flex flex-col sm:flex-row gap-4 sm:items-center">
-                                <div class="flex-shrink-0 w-14 h-14 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-2xl"><i class="fa-solid fa-book-open"></i></div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-emerald-950 mb-2">知性啟程</h3>
-                                    <p class="text-gray-600 text-sm leading-relaxed">參訪全國唯一公立的坪林茶業博物館，建立對坪林茶鄉文化與生態保育的初步認知。</p>
+                            <div class="bg-emerald-800/10 rounded-2xl p-4 border border-emerald-100 shadow-sm">
+                                <div class="aspect-video bg-emerald-900/10 rounded-xl flex items-center justify-center text-emerald-800 font-medium">
+                                    <span class="text-sm text-center px-4"><i class="fa-solid fa-eye-dropper text-3xl mb-2 block"></i> 內部特展：多元感官「感・茶芬」氣味體驗與茶葉歷史陳列</span>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="flex items-stretch gap-4 md:gap-6 group">
-                            <div class="flex flex-col items-center pt-3">
-                                <div class="w-10 h-10 bg-emerald-500 text-white rounded-full flex items-center justify-center font-bold border-4 border-white shadow-sm z-10 group-hover:bg-emerald-600 transition-colors">2</div>
-                            </div>
-                            <div class="flex-1 bg-white p-5 md:p-6 rounded-2xl shadow-sm border border-emerald-50 hover:shadow-md hover:border-emerald-200 transition-all flex flex-col sm:flex-row gap-4 sm:items-center">
-                                <div class="flex-shrink-0 w-14 h-14 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-2xl"><i class="fa-solid fa-leaf"></i></div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-emerald-950 mb-2">茶園手作</h3>
-                                    <p class="text-gray-600 text-sm leading-relaxed">進入當地茶園體驗百年製茶工藝。在適合茶樹生長的多雨多霧環境中，親手進行揉茶體驗。</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex items-stretch gap-4 md:gap-6 group">
-                            <div class="flex flex-col items-center pt-3">
-                                <div class="w-10 h-10 bg-emerald-500 text-white rounded-full flex items-center justify-center font-bold border-4 border-white shadow-sm z-10 group-hover:bg-emerald-600 transition-colors">3</div>
-                            </div>
-                            <div class="flex-1 bg-white p-5 md:p-6 rounded-2xl shadow-sm border border-emerald-50 hover:shadow-md hover:border-emerald-200 transition-all flex flex-col sm:flex-row gap-4 sm:items-center">
-                                <div class="flex-shrink-0 w-14 h-14 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-2xl"><i class="fa-solid fa-store"></i></div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-emerald-950 mb-2">老街尋味</h3>
-                                    <p class="text-gray-600 text-sm leading-relaxed">漫步於保有閩南式建築風格的坪林老街，在改建的老屋中享用以文山包種茶、茶油製作的在地茶點。</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex items-stretch gap-4 md:gap-6 group">
-                            <div class="flex flex-col items-center pt-3">
-                                <div class="w-10 h-10 bg-emerald-500 text-white rounded-full flex items-center justify-center font-bold border-4 border-white shadow-sm z-10 group-hover:bg-emerald-600 transition-colors">4</div>
-                            </div>
-                            <div class="flex-1 bg-white p-5 md:p-6 rounded-2xl shadow-sm border border-emerald-50 hover:shadow-md hover:border-emerald-200 transition-all flex flex-col sm:flex-row gap-4 sm:items-center">
-                                <div class="flex-shrink-0 w-14 h-14 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-2xl"><i class="fa-solid fa-tree"></i></div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-emerald-950 mb-2">森林療癒</h3>
-                                    <p class="text-gray-600 text-sm leading-relaxed">踏上淡蘭古道南路，在低海拔森林生態與柳杉林中健行，吸收芬多精釋放壓力。</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex items-stretch gap-4 md:gap-6 group">
-                            <div class="flex flex-col items-center pt-3">
-                                <div class="w-10 h-10 bg-emerald-500 text-white rounded-full flex items-center justify-center font-bold border-4 border-white shadow-sm z-10 group-hover:bg-emerald-600 transition-colors">5</div>
-                            </div>
-                            <div class="flex-1 bg-white p-5 md:p-6 rounded-2xl shadow-sm border border-emerald-50 hover:shadow-md hover:border-emerald-200 transition-all flex flex-col sm:flex-row gap-4 sm:items-center">
-                                <div class="flex-shrink-0 w-14 h-14 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-2xl"><i class="fa-solid fa-mug-hot"></i></div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-emerald-950 mb-2">溪畔靜心</h3>
-                                    <p class="text-gray-600 text-sm leading-relaxed">於水質優良的北勢溪畔或金瓜寮溪觀魚步道旁，設立戶外茶席，以一杯包種茶為整日的療癒旅程作結。</p>
-                                </div>
-                            </div>
+                        <div class="w-full lg:w-1/2 space-y-4">
+                            <div class="inline-block px-3 py-1 bg-emerald-100 text-emerald-800 rounded-lg text-sm font-bold font-mono">STATION 01</div>
+                            <h3 class="text-2xl font-bold text-gray-900">第一站：坪林茶業博物館</h3>
+                            <p class="text-gray-600 leading-relaxed text-base">
+                                旅程的知性啟程點。參訪全國唯一公立的坪林茶業博物館，建立對坪林茶鄉文化與生態保育的初步認知。館內透過結合「感・茶芬」等多元感官與數位化科技互動裝置，帶領遊客深度探索包種茶背後的歷史脈絡。
+                            </p>
                         </div>
                     </div>
+
+                    <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
+                        <div class="w-full lg:w-1/2 space-y-4">
+                            <div class="bg-emerald-800/10 rounded-2xl p-4 border border-emerald-100 shadow-sm">
+                                <div class="aspect-video bg-emerald-900/10 rounded-xl flex items-center justify-center text-emerald-800 font-medium">
+                                    <span class="text-sm text-center px-4"><i class="fa-solid fa-hands text-3xl mb-2 block"></i> 實景意象：職人於茶盤上純手工專注「揉捻」新鮮文山包種茶葉</span>
+                                </div>
+                            </div>
+                            <div class="bg-emerald-800/10 rounded-2xl p-4 border border-emerald-100 shadow-sm">
+                                <div class="aspect-video bg-emerald-900/10 rounded-xl flex items-center justify-center text-emerald-800 font-medium">
+                                    <span class="text-sm text-center px-4"><i class="fa-solid fa-palette text-3xl mb-2 block"></i> 文化插畫：清代茶農於焙茶間進行揉茶與室內萎凋的古法製茶工藝</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-1/2 space-y-4">
+                            <div class="inline-block px-3 py-1 bg-emerald-100 text-emerald-800 rounded-lg text-sm font-bold font-mono">STATION 02</div>
+                            <h3 class="text-2xl font-bold text-gray-900">第二站：入茶園親手揉茶</h3>
+                            <p class="text-gray-600 leading-relaxed text-base">
+                                走入在地實體茶園，在適合茶樹生長的多雨多霧氤氳環境下，親自體驗百年揉茶工藝。透過雙手掌心的溫度與力道，感受新鮮文山包種茶葉在揉捻過程中釋放出的高雅花香，實地體會茶農精準掌控土地智慧的辛苦與魅力。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col lg:flex-row items-center gap-12">
+                        <div class="w-full lg:w-1/2 space-y-4">
+                            <div class="bg-emerald-800/10 rounded-2xl p-4 border border-emerald-100 shadow-sm">
+                                <div class="aspect-video bg-emerald-900/10 rounded-xl flex items-center justify-center text-emerald-800 font-medium">
+                                    <span class="text-sm text-center px-4"><i class="fa-solid fa-bowl-food text-3xl mb-2 block"></i> 特色美食：淋上純正茶油與香焙油蔥酥的特色「茶油麵線」</span>
+                                </div>
+                            </div>
+                            <div class="bg-emerald-800/10 rounded-2xl p-4 border border-emerald-100 shadow-sm">
+                                <div class="aspect-video bg-emerald-900/10 rounded-xl flex items-center justify-center text-emerald-800 font-medium">
+                                    <span class="text-sm text-center px-4"><i class="fa-solid fa-bottle-dropper text-3xl mb-2 block"></i> 在地選物：老街店家整齊陳列的 100% 特級坪林精選包種茶油</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-1/2 space-y-4">
+                            <div class="inline-block px-3 py-1 bg-emerald-100 text-emerald-800 rounded-lg text-sm font-bold font-mono">STATION 03</div>
+                            <h3 class="text-2xl font-bold text-gray-900">第三站：坪林老街覓食趣</h3>
+                            <p class="text-gray-600 leading-relaxed text-base">
+                                中午漫步於保有閩南式建築風格的坪林老街中，開啟一場舌尖上的茶香旅行。在充滿美學再造的老屋空間或老街餐館內，享用古法手工茶油麵線、茶凍，並品嚐百年歷史商號精製的冷泡文山包種茶。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
+                        <div class="w-full lg:w-1/2 space-y-4">
+                            <div class="bg-emerald-800/10 rounded-2xl p-4 border border-emerald-100 shadow-sm">
+                                <div class="aspect-video bg-emerald-900/10 rounded-xl flex items-center justify-center text-emerald-800 font-medium">
+                                    <span class="text-sm text-center px-4"><i class="fa-solid fa-bridge text-3xl mb-2 block"></i> 歷史古道：橫跨溪谷、掩映在繁茂蒼翠森林中的淡蘭古道紅色「闊瀨吊橋」</span>
+                                </div>
+                            </div>
+                            <div class="bg-emerald-800/10 rounded-2xl p-4 border border-emerald-100 shadow-sm">
+                                <div class="aspect-video bg-emerald-900/10 rounded-xl flex items-center justify-center text-emerald-800 font-medium">
+                                    <span class="text-sm text-center px-4"><i class="fa-solid fa-map text-3xl mb-2 block"></i> 地圖走讀：富陽、福州山至坪林闊瀨一帶，全程約 10 公里的登山健行路線圖</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-1/2 space-y-4">
+                            <div class="inline-block px-3 py-1 bg-emerald-100 text-emerald-800 rounded-lg text-sm font-bold font-mono">STATION 04</div>
+                            <h3 class="text-2xl font-bold text-gray-900">第四站：療癒在淡蘭古道</h3>
+                            <p class="text-gray-600 leading-relaxed text-base">
+                                下午踏上極具歷史印記的「淡蘭古道南路（茶道）」。漫步在低海拔原始森林生態與壯麗的柳杉林中，沿途行經高掛於溪谷間的紅色闊瀨吊橋，近距離接觸冰河時期孑遺植物與繁茂蕨類，盡情吸收大自然飽滿的芬多精，徹底釋放都市生活的緊繃壓力。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col lg:flex-row items-center gap-12">
+                        <div class="w-full lg:w-1/2 space-y-4">
+                            <div class="bg-emerald-800/10 rounded-2xl p-4 border border-emerald-100 shadow-sm">
+                                <div class="aspect-video bg-emerald-900/10 rounded-xl flex items-center justify-center text-emerald-800 font-medium">
+                                    <span class="text-sm text-center px-4"><i class="fa-solid fa-water text-3xl mb-2 block"></i> 溪流生態：流經坪林市區核心、水質清澈、兩岸綠意盎然的北勢溪畔景緻與吊橋</span>
+                                </div>
+                            </div>
+                            <div class="bg-emerald-800/10 rounded-2xl p-4 border border-emerald-100 shadow-sm">
+                                <div class="aspect-video bg-emerald-900/10 rounded-xl flex items-center justify-center text-emerald-800 font-medium">
+                                    <span class="text-sm text-center px-4"><i class="fa-solid fa-shoe-prints text-3xl mb-2 block"></i> 綠色旅遊：金瓜寮溪帶狀發展的「金瓜寮魚蕨步道」與低碳單車道入口處</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-1/2 space-y-4">
+                            <div class="inline-block px-3 py-1 bg-emerald-100 text-emerald-800 rounded-lg text-sm font-bold font-mono">STATION 05</div>
+                            <h3 class="text-2xl font-bold text-gray-900">最後一站：溪邊靜心品茶</h3>
+                            <p class="text-gray-600 leading-relaxed text-base">
+                                旅程的完美終點。在水質優良、群聚台灣鏟頜魚的北勢溪畔或金瓜寮溪觀魚步道旁，設立臨溪戶外茶席。聽著潺潺流水聲，品嚐一杯香氣高雅、甘甜持久的頂級文山包種茶，完成這趟從感官滿足昇華至心靈安定安穩的療癒經濟創生體驗。
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="text-center mt-24 border-t border-emerald-100 pt-16">
+                    <button onclick="alert('【模擬預約系統】\n畫面將跳轉至日曆選擇與線上支付金流系統。\n成功降低報名門檻！')" class="px-8 py-4 bg-emerald-600 text-white rounded-2xl font-bold text-lg shadow-lg hover:bg-emerald-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-3 cursor-pointer">
+                        <i class="fa-regular fa-calendar-check text-xl"></i> 立即線上預約此套裝行程
+                    </button>
+                    <p class="text-gray-400 text-xs mt-3">支援 Apple Pay / Line Pay 快速結帳與 LINE 會員集點</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="tea-houses" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 tracking-wider">在地茶莊案內所</h2>
+                <div class="h-1 w-12 bg-emerald-500 mx-auto mt-4 rounded-full"></div>
+                <p class="text-gray-500 mt-2 text-sm">我們不賣所有茶，我們只為您指路坪林最美的茶香故事。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 flex flex-col group hover:shadow-lg transition-all duration-300 text-center">
+                    <div class="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-full mx-auto flex items-center justify-center text-3xl mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-colors"><i class="fa-solid fa-house-chimney"></i></div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-1">百年源遠茶行</h3>
+                    <p class="text-xs text-amber-600 font-bold mb-3">五代傳承・炭火烘焙</p>
+                    <p class="text-gray-500 text-sm flex-1 mb-4 line-clamp-2">堅持古法紅木炭焙，入口帶有獨特的醇厚火香。</p>
+                    <button class="w-full py-2 border border-emerald-600 text-emerald-600 rounded-xl font-bold text-sm hover:bg-emerald-50 transition-colors cursor-pointer">前往探索主頁</button>
+                </div>
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 flex flex-col group hover:shadow-lg transition-all duration-300 text-center">
+                    <div class="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-full mx-auto flex items-center justify-center text-3xl mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-colors"><i class="fa-solid fa-mug-saucer"></i></div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-1">白水咖啡茶館</h3>
+                    <p class="text-xs text-amber-600 font-bold mb-3">老屋改建・文青品茶</p>
+                    <p class="text-gray-500 text-sm flex-1 mb-4 line-clamp-2">將包種茶融入西式甜點，老街上最美的打卡視角。</p>
+                    <button class="w-full py-2 border border-emerald-600 text-emerald-600 rounded-xl font-bold text-sm hover:bg-emerald-50 transition-colors cursor-pointer">前往探索主頁</button>
+                </div>
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 flex flex-col group hover:shadow-lg transition-all duration-300 text-center">
+                    <div class="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-full mx-auto flex items-center justify-center text-3xl mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-colors"><i class="fa-solid fa-mountain-sun"></i></div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-1">山林鳥語生態茶園</h3>
+                    <p class="text-xs text-amber-600 font-bold mb-3">無毒農法・流域收復</p>
+                    <p class="text-gray-500 text-sm flex-1 mb-4 line-clamp-2">與台灣藍鵲共存的生態茶園，體驗親手採茶樂趣。</p>
+                    <button class="w-full py-2 border border-emerald-600 text-emerald-600 rounded-xl font-bold text-sm hover:bg-emerald-50 transition-colors cursor-pointer">前往探索主頁</button>
+                </div>
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 flex flex-col group hover:shadow-lg transition-all duration-300 text-center">
+                    <div class="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-full mx-auto flex items-center justify-center text-3xl mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-colors"><i class="fa-solid fa-box-open"></i></div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-1">青世代選物</h3>
+                    <p class="text-xs text-amber-600 font-bold mb-3">設計包裝・跨界聯名</p>
+                    <p class="text-gray-500 text-sm flex-1 mb-4 line-clamp-2">在地青年返鄉創立，最潮的茶葉伴手禮都在這裡。</p>
+                    <button class="w-full py-2 border border-emerald-600 text-emerald-600 rounded-xl font-bold text-sm hover:bg-emerald-50 transition-colors cursor-pointer">前往探索主頁</button>
                 </div>
             </div>
         </section>
 
-        <section id="events" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 tracking-wider">當期活動推廣</h2>
-                <div class="h-1 w-12 bg-emerald-500 mx-auto mt-4 rounded-full"></div>
-            </div>
+        <section id="events" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-gray-900 tracking-wider">當期活動推廣</h2>
+                    <div class="h-1 w-12 bg-emerald-500 mx-auto mt-4 rounded-full"></div>
+                </div>
 
-            <div class="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl border border-emerald-100 p-6 md:p-8 flex flex-col md:flex-row gap-8 items-center max-w-4xl mx-auto shadow-sm">
-                <div class="w-full md:w-1/2 bg-white p-6 rounded-xl shadow-xs border border-emerald-100 text-center">
-                    <div class="text-xs font-bold text-amber-600 border border-amber-300 rounded-full px-3 py-1 inline-block bg-amber-50 mb-4">2026 ‧ 春茶市集</div>
-                    <div class="space-y-4 text-left border-l-2 border-emerald-500 pl-4">
-                        <p class="text-sm font-semibold text-gray-800">【坪林場】</p>
-                        <p class="text-xs text-gray-600 font-mono">📅 6/6 (六)、7 (日) <br>📅 6/13 (六)、14 (日) <span class="text-gray-400 font-sans ml-2">(10:00-17:00)</span></p>
-                        <p class="text-xs text-gray-500">📍 地點：坪林茶業博物館旁廣場</p>
-                        <hr class="border-gray-100">
-                        <p class="text-sm font-semibold text-gray-800">【台北場】</p>
-                        <p class="text-xs text-gray-600 font-mono">📅 6/20 (六)、21 (日) <span class="text-gray-400 font-sans ml-2">(10:00-19:00 / 10:00-18:00)</span></p>
-                        <p class="text-xs text-gray-500">📍 地點：台北希望廣場</p>
+                <div class="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl border border-emerald-100 p-6 md:p-8 flex flex-col md:flex-row gap-8 items-center max-w-4xl mx-auto shadow-sm mb-8">
+                    <div class="w-full md:w-1/2 bg-white p-6 rounded-xl shadow-xs border border-emerald-100 text-center">
+                        <div class="text-xs font-bold text-amber-600 border border-amber-300 rounded-full px-3 py-1 inline-block bg-amber-50 mb-4">2026 ‧ 春茶市集</div>
+                        <div class="space-y-4 text-left border-l-2 border-emerald-500 pl-4">
+                            <p class="text-sm font-semibold text-gray-800">【坪林場】</p>
+                            <p class="text-xs text-gray-600 font-mono">📅 6/6 (六)、7 (日) <br>📅 6/13 (六)、14 (日) <span class="text-gray-400 font-sans ml-2">(10:00-17:00)</span></p>
+                            <p class="text-xs text-gray-500">📍 地點：坪林茶業博物館旁廣場</p>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 space-y-4">
+                        <h3 class="text-2xl font-bold text-emerald-950">新北好茶 │ 春燕品香茗</h3>
+                        <div class="inline-flex items-center gap-2 text-emerald-700 bg-emerald-100/60 px-3 py-1 rounded-md font-mono text-sm font-semibold">
+                            <i class="fa-regular fa-calendar-days"></i> 2026-06-06 ~ 2026-06-21
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            配合新北好茶節年度推廣，現場提供多樣化精緻文山包種茶、茶凍等特色茶食供遊客免費體驗品茗。
+                        </p>
                     </div>
                 </div>
-                <div class="w-full md:w-1/2 space-y-4">
-                    <h3 class="text-2xl font-bold text-emerald-950">新北好茶 │ 春燕品香茗</h3>
-                    <div class="inline-flex items-center gap-2 text-emerald-700 bg-emerald-100/60 px-3 py-1 rounded-md font-mono text-sm font-semibold">
-                        <i class="fa-regular fa-calendar-days"></i> 2026-06-06 ~ 2026-06-21
+
+                <div class="max-w-4xl mx-auto bg-rose-50 border border-rose-100 rounded-2xl p-6 flex items-center justify-between shadow-sm">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-rose-500 text-2xl shadow-sm"><i class="fa-brands fa-instagram"></i></div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">UGC 打卡換好康限定活動！</h4>
+                            <p class="text-sm text-gray-600">使用「一葉知山河」專屬 IG 濾鏡在老街拍照打卡，即可至指定店家免費兌換 <span class="font-bold text-rose-500">包種茶香霜淇淋</span> 乙支 🍦</p>
+                        </div>
                     </div>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        配合新北好茶節年度推廣，結合坪林成熟的在地職人製茶工藝與在地品牌力加持 。現場提供多樣化精緻文山包種茶、茶凍等特色茶食供遊客免費體驗品茗 ，歡迎大台北都市居民利用週末前來體驗療癒經濟 。
-                    </p>
+                    <button class="hidden sm:block px-4 py-2 bg-rose-500 text-white rounded-lg text-sm font-bold shadow-sm hover:bg-rose-600 transition-colors cursor-pointer">領取濾鏡</button>
                 </div>
             </div>
         </section>
@@ -344,64 +438,76 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-gray-200 pb-6 mb-8 gap-4">
                 <div>
-                    <button onclick="switchView('main')" class="text-sm text-emerald-700 hover:text-emerald-800 font-semibold mb-2 block cursor-pointer"><i class="fa-solid fa-arrow-left mr-1"></i> 返回創生主首頁</button>
-                    <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">坪林在地農特產集市</h2>
+                    <button onclick="switchView('main')" class="text-sm text-emerald-700 hover:text-emerald-800 font-semibold mb-2 block cursor-pointer"><i class="fa-solid fa-arrow-left mr-1"></i> 返回主首頁</button>
+                    <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight font-serif">坪林選茶指南</h2>
                 </div>
-                <p class="text-sm text-gray-500 max-w-md">結合在地青年包裝升級與數位行銷，不需親自前來也能透過線上商城下單，提高在地特色產品之附加價值 。</p>
+                <p class="text-sm text-gray-500 max-w-md">拒絕生硬的「水級」分類！依照您的情境需求，我們為您挑選最適合的故事與風味。</p>
+            </div>
+
+            <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-emerald-100 mb-12 flex flex-col md:flex-row">
+                <div class="md:w-1/3 bg-emerald-900 text-white p-8 flex flex-col justify-center">
+                    <i class="fa-solid fa-quote-left text-4xl text-emerald-700 mb-4"></i>
+                    <p class="text-lg font-serif tracking-widest leading-relaxed">每一片茶葉，都是百年老屋與返鄉青年的跨時空對話。</p>
+                </div>
+                <div class="md:w-2/3 p-8 flex flex-col justify-center text-gray-600 text-sm leading-relaxed space-y-4">
+                    <p>為什麼坪林的包種茶特別香？因為它吸收了雪山尾稜的霧氣，也濃縮了在地茶農日夜不休「浪菁」的堅持。</p>
+                    <p>我們將市府的景點清單與農會的生硬分級，轉化為以下的情境選單。無論您是要買給懂茶的長輩、還是想找個週末療癒自己，這裡都有屬於您的答案。</p>
+                </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-white rounded-2xl shadow-xs border border-gray-100 overflow-hidden flex flex-col group hover:shadow-md transition-shadow duration-300">
-                    <div class="h-60 bg-emerald-50 flex items-center justify-center text-emerald-800 font-medium relative">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent"></div>
-                        <i class="fa-solid fa-leaf text-4xl text-emerald-300"></i>
-                        <span class="absolute top-4 left-4 bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded-md shadow-xs">熱銷冠軍</span>
+                    <div class="h-56 bg-emerald-50 flex flex-col items-center justify-center text-emerald-800 font-medium relative">
+                        <i class="fa-solid fa-leaf text-4xl text-emerald-300 mb-2"></i>
+                        <span class="bg-rose-100 text-rose-700 font-bold text-xs px-3 py-1 rounded-full shadow-sm">#送長輩不出錯</span>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
                         <div>
-                            <h3 class="font-bold text-lg text-gray-900 group-hover:text-emerald-600 transition-colors">特級文山包種茶 (150g)</h3>
-                            <p class="text-gray-500 text-xs mt-1 leading-relaxed">清朝引進之經典百年傳承茶種，獨特優雅花香與回甘甜味 。</p>
+                            <h3 class="font-bold text-lg text-gray-900 group-hover:text-emerald-600 transition-colors">冠軍手路 頂級包種茶</h3>
+                            <p class="text-gray-500 text-xs mt-2 leading-relaxed">入口花香撲鼻，落喉甘甜不澀。最適合送給對茶葉有要求的老丈人或長官。</p>
                         </div>
                         <div class="flex items-center justify-between pt-2">
-                            <span class="text-emerald-700 font-extrabold text-xl font-mono">NT$ 450</span>
-                            <button onclick="addToCart('特級文山包種茶', 450)" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-colors cursor-pointer shadow-sm shadow-emerald-100">
-                                <i class="fa-solid fa-cart-plus mr-1"></i> 加入購物車
+                            <span class="text-emerald-700 font-extrabold text-xl font-mono">NT$ 1,200</span>
+                            <button onclick="addToCart('頂級包種茶', 1200)" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-bold transition-colors cursor-pointer shadow-sm">
+                                <i class="fa-solid fa-cart-plus mr-1"></i> 選購
                             </button>
                         </div>
                     </div>
                 </div>
 
                 <div class="bg-white rounded-2xl shadow-xs border border-gray-100 overflow-hidden flex flex-col group hover:shadow-md transition-shadow duration-300">
-                    <div class="h-60 bg-emerald-50 flex items-center justify-center text-emerald-800 font-medium relative">
-                        <i class="fa-solid fa-bowl-rice text-4xl text-emerald-300"></i>
+                    <div class="h-56 bg-emerald-50 flex flex-col items-center justify-center text-emerald-800 font-medium relative">
+                        <i class="fa-solid fa-mug-hot text-4xl text-emerald-300 mb-2"></i>
+                        <span class="bg-amber-100 text-amber-700 font-bold text-xs px-3 py-1 rounded-full shadow-sm">#第一次喝怕苦首選</span>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
                         <div>
-                            <h3 class="font-bold text-lg text-gray-900 group-hover:text-emerald-600 transition-colors">手工古法 茶油麵線 (5入)</h3>
-                            <p class="text-gray-500 text-xs mt-1 leading-relaxed">坪林老街知名特產特色茶食，純手工拉製配合健康茶油溫潤養生 。</p>
+                            <h3 class="font-bold text-lg text-gray-900 group-hover:text-emerald-600 transition-colors">蜜香青茶 冷泡茶包 (20入)</h3>
+                            <p class="text-gray-500 text-xs mt-2 leading-relaxed">小綠葉蟬叮咬後的天然蜜香，冷泡也能輕鬆釋放甘甜，上班族的無糖救星。</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-2">
+                            <span class="text-emerald-700 font-extrabold text-xl font-mono">NT$ 350</span>
+                            <button onclick="addToCart('蜜香青茶冷泡茶包', 350)" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-bold transition-colors cursor-pointer shadow-sm">
+                                <i class="fa-solid fa-cart-plus mr-1"></i> 選購
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-xs border border-gray-100 overflow-hidden flex flex-col group hover:shadow-md transition-shadow duration-300">
+                    <div class="h-56 bg-emerald-50 flex flex-col items-center justify-center text-emerald-800 font-medium relative">
+                        <i class="fa-solid fa-ice-cream text-4xl text-emerald-300 mb-2"></i>
+                        <span class="bg-blue-100 text-blue-700 font-bold text-xs px-3 py-1 rounded-full shadow-sm">#網美打卡必備</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-900 group-hover:text-emerald-600 transition-colors">晶瑩剔透 包種茶凍禮盒</h3>
+                            <p class="text-gray-500 text-xs mt-2 leading-relaxed">跨界甜點聯名！精緻透明包裝保留茶葉天然清香，低卡無負擔的週末下午茶。</p>
                         </div>
                         <div class="flex items-center justify-between pt-2">
                             <span class="text-emerald-700 font-extrabold text-xl font-mono">NT$ 280</span>
-                            <button onclick="addToCart('手工古法 茶油麵線', 280)" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-colors cursor-pointer shadow-sm shadow-emerald-100">
-                                <i class="fa-solid fa-cart-plus mr-1"></i> 加入購物車
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl shadow-xs border border-gray-100 overflow-hidden flex flex-col group hover:shadow-md transition-shadow duration-300">
-                    <div class="h-60 bg-emerald-50 flex items-center justify-center text-emerald-800 font-medium relative">
-                        <i class="fa-solid fa-ice-cream text-4xl text-emerald-300"></i>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                        <div>
-                            <h3 class="font-bold text-lg text-gray-900 group-hover:text-emerald-600 transition-colors">天然包種茶凍禮盒 (6入)</h3>
-                            <p class="text-gray-500 text-xs mt-1 leading-relaxed">精緻化茶食品開發，保留茶葉天然清香，年輕網美熱愛打卡點心 。</p>
-                        </div>
-                        <div class="flex items-center justify-between pt-2">
-                            <span class="text-emerald-700 font-extrabold text-xl font-mono">NT$ 180</span>
-                            <button onclick="addToCart('天然包種茶凍禮盒', 180)" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-colors cursor-pointer shadow-sm shadow-emerald-100">
-                                <i class="fa-solid fa-cart-plus mr-1"></i> 加入購物車
+                            <button onclick="addToCart('包種茶凍禮盒', 280)" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-bold transition-colors cursor-pointer shadow-sm">
+                                <i class="fa-solid fa-cart-plus mr-1"></i> 選購
                             </button>
                         </div>
                     </div>
@@ -415,49 +521,42 @@
             <div class="bg-emerald-900 text-white p-5 flex items-center justify-between">
                 <div class="flex items-center gap-2">
                     <i class="fa-solid fa-receipt"></i>
-                    <h3 class="font-bold text-lg">展示用結帳虛擬櫃檯</h3>
+                    <h3 class="font-bold text-lg">快速結帳櫃檯</h3>
                 </div>
                 <button onclick="closeCartModal()" class="text-emerald-200 hover:text-white transition-colors cursor-pointer"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
-            
             <div id="cart-items-container" class="p-6 overflow-y-auto space-y-4 flex-1">
                 <p class="text-gray-400 text-center text-sm py-8">購物車目前空空如也...</p>
             </div>
-            
             <div class="border-t border-gray-100 p-6 bg-gray-50 space-y-4">
                 <div class="flex items-center justify-between font-bold text-gray-900">
                     <span>應付總計金額：</span>
                     <span id="cart-total-price" class="text-emerald-700 font-mono text-xl">NT$ 0</span>
                 </div>
-                <button onclick="simulateCheckoutSuccess()" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-sm tracking-wider shadow-md shadow-emerald-100 transition-colors cursor-pointer">
-                    確認送出訂單 (虛擬功能展示)
+                <button onclick="simulateCheckoutSuccess()" class="w-full py-3 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl font-bold text-sm tracking-wider shadow-md transition-colors cursor-pointer">
+                    前往結帳 / Apple Pay
                 </button>
             </div>
         </div>
     </div>
 
-    <footer class="bg-gray-900 text-gray-400 text-xs text-center py-6 border-t border-gray-800">
-        <p>&copy; 2026 坪林區地方創生數位平台架構模組. All rights reserved.</p>
+    <footer class="bg-gray-900 text-gray-400 text-xs text-center py-8 border-t border-gray-800">
+        <div class="font-serif text-gray-300 text-lg mb-2">一葉知山河｜坪林</div>
+        <p>&copy; 2026 都市地理與地方創生企劃成果展示. All rights reserved.</p>
     </footer>
 
     <script>
-        // 全域虛擬購物車狀態變數
         let cart = [];
 
-        // 1. 頁面平滑滾動控制
         function scrollToSection(id) {
             const el = document.getElementById(id);
-            if (el) {
-                el.scrollIntoView({ behavior: 'smooth' });
-            }
+            if (el) { el.scrollIntoView({ behavior: 'smooth' }); }
         }
 
-        // 2. 切換檢視畫面控制 (主首頁 v.s 獨立購物網頁面)
         function switchView(viewName) {
             document.querySelectorAll('.view-section').forEach(section => {
                 section.classList.add('hidden');
             });
-            
             if (viewName === 'main') {
                 document.getElementById('main-view').classList.remove('hidden');
             } else if (viewName === 'shop') {
@@ -466,24 +565,17 @@
             }
         }
 
-        // 3. 必遊景點：點擊展開/收合手風琴特效控制
         function toggleAttraction(id) {
             const container = document.getElementById(id + '-content');
-            if (container.classList.contains('hidden')) {
-                container.classList.remove('hidden');
-            } else {
-                container.classList.add('hidden');
-            }
+            container.classList.toggle('hidden');
         }
 
-        // 4. 購物功能：加入購物車
         function addToCart(name, price) {
             cart.push({ name, price });
             updateCartBadge();
-            alert(`【${name}】已成功加入虛擬購物車！`);
+            alert(`已將情境選茶：【${name}】加入購物車！`);
         }
 
-        // 5. 更新購物車圖標徽章數量
         function updateCartBadge() {
             const badge = document.getElementById('cart-badge');
             if (cart.length > 0) {
@@ -494,17 +586,16 @@
             }
         }
 
-        // 6. 打開結帳畫面彈窗並動態計算渲染明細
         function openCartModal() {
             const modal = document.getElementById('cart-modal');
             const container = document.getElementById('cart-items-container');
             const totalText = document.getElementById('cart-total-price');
             
             modal.classList.remove('hidden');
-            container.innerHTML = ''; // 清空舊內容
+            container.innerHTML = ''; 
             
             if (cart.length === 0) {
-                container.innerHTML = '<p class="text-gray-400 text-center text-sm py-8">購物車目前空空如也，快去商城逛逛吧！</p>';
+                container.innerHTML = '<p class="text-gray-400 text-center text-sm py-8">購物車空空如也，快去選購適合您的好茶吧！</p>';
                 totalText.innerText = 'NT$ 0';
                 return;
             }
@@ -514,31 +605,33 @@
                 total += item.price;
                 const div = document.createElement('div');
                 div.className = 'flex items-center justify-between border-b border-gray-50 pb-2 text-sm';
-                div.innerHTML = `
-                    <span class="text-gray-800 font-medium">${item.name}</span>
-                    <span class="text-emerald-700 font-mono font-semibold">NT$ ${item.price}</span>
-                `;
+                div.innerHTML = `<span class="text-gray-800 font-medium">${item.name}</span><span class="text-emerald-700 font-mono font-semibold">NT$ ${item.price}</span>`;
                 container.appendChild(div);
             });
-            
             totalText.innerText = `NT$ ${total}`;
         }
 
-        // 7. 關閉結帳彈窗
         function closeCartModal() {
             document.getElementById('cart-modal').classList.add('hidden');
         }
 
-        // 8. 模擬虛擬結帳成功動作
         function simulateCheckoutSuccess() {
             if (cart.length === 0) {
-                alert('您的購物車內沒有任何商品可以結帳喔！');
+                alert('您的購物車內沒有任何商品喔！');
                 return;
             }
-            alert('【展示用結帳成功】系統已成功記錄您的虛擬訂單！(此處僅提供前端展示，不具備實際金流功能)');
+            alert('【展示用結帳成功】系統已成功記錄您的訂單，並將資料匯入顧客再行銷系統。');
             cart = [];
             updateCartBadge();
             closeCartModal();
+        }
+
+        function castVote(id) {
+            const el = document.getElementById('vote-count-' + id);
+            let currentVotes = parseInt(el.innerText.replace(/,/g, '').replace(' 票', ''));
+            currentVotes++;
+            el.innerText = currentVotes.toLocaleString() + ' 票';
+            alert('感謝您的投票！別忘了在導覽列加入 LINE 官方帳號領取抽獎資格喔！');
         }
     </script>
 </body>
